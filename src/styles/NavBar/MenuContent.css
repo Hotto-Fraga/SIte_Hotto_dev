@@ -1,0 +1,573 @@
+/* ================================
+   MENU CONTAINER - Enhanced Glassmorphism
+   ================================ */
+.Menu_Container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 22rem;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--background) / 0.95),
+        hsl(var(--card) / 0.98)
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    z-index: 3;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.5rem;
+    border-left: 1px solid hsl(var(--primary) / 0.3);
+    box-shadow: 
+        -8px 0 32px hsl(var(--primary) / 0.15),
+        inset 1px 0 0 hsl(var(--primary) / 0.1);
+}
+
+.Menu_Container.active {
+    right: 0;
+}
+
+/* ================================
+   MENU OVERLAY - Enhanced Blur
+   ================================ */
+.Menu_Overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.85)
+    );
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.Menu_Overlay.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ================================
+   DRAWER CONTENT
+   ================================ */
+.menu_drawer_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: space-between;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu_drawer_content.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Custom Scrollbar */
+.menu_drawer_content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu_drawer_content::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 10px;
+}
+
+.menu_drawer_content::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 10px;
+}
+
+.menu_drawer_content::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6);
+}
+
+/* ================================
+   CLOSE BUTTON - Floating Style
+   ================================ */
+.menu_drawer_content .close_menu_button {
+    align-self: flex-start;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu_drawer_content .close_menu_button:hover .menu_drawer_content .close_menu_button .theme_icons {
+    color: hsl(var(--primary) / .8);
+}
+
+.menu_drawer_content .close_menu_button:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+}
+
+.menu_drawer_content .theme_icons {
+    color: hsl(var(--primary));
+}
+
+/* ================================
+   GRADIENT HEADER WITH PROFILE
+   ================================ */
+.menu_header_gradient {
+    background: linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.15),
+        hsl(var(--secondary) / 0.1)
+    );
+    border-radius: 1rem;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.1);
+}
+
+.menu_header_gradient::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle,
+        hsl(var(--primary) / 0.2) 0%,
+        transparent 70%
+    );
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-10%, -10%) rotate(180deg); }
+}
+
+.profile_preview {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar_placeholder {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
+    flex-shrink: 0;
+}
+
+.profile_info {
+    flex: 1;
+}
+
+.profile_greeting {
+    font-size: 1rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin: 0;
+}
+
+.profile_subtitle {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+    margin-top: 0.125rem;
+}
+
+/* ================================
+   MINI SEARCH BAR
+   ================================ */
+.menu_search_container {
+    position: relative;
+    width: 100%;
+}
+
+.menu_search_input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    background: hsl(var(--muted) / 0.5);
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.75rem;
+    color: hsl(var(--foreground));
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.menu_search_input:focus {
+    background: hsl(var(--background));
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+}
+
+.search_icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+}
+
+/* ================================
+   CONTENT CONTAINER
+   ================================ */
+.menu_drawer_content .content_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ================================
+   SECTION TITLE WITH BADGE
+   ================================ */
+.menu_drawer_content .content_container h3 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: hsl(var(--muted-foreground)); 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section_title_text {
+    flex: 1;
+}
+
+.section_badge {
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(var(--primary));
+    padding: 0.125rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* DIVIDER */
+.menu_drawer_content .content_container .Divider {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(
+        to right,
+        hsl(var(--primary) / 0.6),
+        hsl(var(--secondary) / 0.3),
+        transparent
+    );
+    border-radius: .15rem;
+    margin: 0;
+}
+
+/* ================================
+   MENU LIST - Staggered Animation
+   ================================ */
+.content_container .menu_list { 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.content_container .menu_item { 
+    width: 100%;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInItem 0.4s ease-out forwards;
+    animation-delay: calc(var(--item-index) * 0.05s);
+}
+
+@keyframes slideInItem {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.content_container .menu_link {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: hsl(var(--muted) / 0.4);
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.75rem;
+    border: 1px solid transparent;
+    position: relative;
+    font-weight: 500;
+}
+
+.content_container .menu_item:hover .menu_link {
+    background: hsl(var(--accent));
+    color: hsl(var(--foreground));
+    transform: translateX(6px);
+    border-color: hsl(var(--primary) / 0.2);
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.1);
+}
+
+/* ================================
+   ACTIVE STATE - Glowing Effect
+   ================================ */
+.content_container .menu_item.active .menu_link {
+    background: linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.15),
+        hsl(var(--secondary) / 0.1)
+    );
+    color: hsl(var(--primary));
+    font-weight: 700;
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 
+        0 4px 16px hsl(var(--primary) / 0.2),
+        inset 0 1px 0 hsl(var(--primary) / 0.1);
+}
+
+
+
+.active_indicator {
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 6px hsl(var(--primary) / 0);
+    }
+}
+
+/* ================================
+   NO RESULTS MESSAGE
+   ================================ */
+.no_results_message {
+    text-align: center;
+    color: hsl(var(--muted-foreground));
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* ================================
+   FOOTER SECTION
+   ================================ */
+.menu_footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid hsl(var(--border));
+}
+
+.menu_drawer_content .Login_Button {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
+}
+
+.menu_drawer_content .Login_Button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsl(var(--primary) / 0.4);
+}
+
+.menu_drawer_content .Login_Button:active {
+    transform: translateY(0);
+}
+
+.menu_drawer_content .Login_Button:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+}
+
+.footer_text {
+    text-align: center;
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+}
+
+/* 
+================================
+        SUBMENU STYLES
+================================ 
+*/
+
+/* Botão do menu principal quando tem submenu */
+.submenu_button {
+    width: 100%;
+}
+
+.submenu_icon {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: hsl(var(--muted-foreground));
+}
+
+.submenu_icon.expanded {
+    transform: rotate(180deg);
+}
+
+/* Lista de submenus */
+.submenu_list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left: 1rem;
+    margin-top: 0;
+}
+
+.submenu_list.expanded {
+    max-height: 500px;
+    margin-top: 0.5rem;
+}
+
+/* Itens do submenu */
+.submenu_item {
+    list-style: none;
+    margin-bottom: 0.25rem;
+}
+
+.submenu_link {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background: hsl(var(--muted) / 0.2);
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    position: relative;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.submenu_link:hover {
+    background: hsl(var(--accent) / 0.8);
+    color: hsl(var(--foreground));
+    transform: translateX(4px);
+    border-color: hsl(var(--primary) / 0.15);
+}
+
+/* Dot indicator para submenu */
+.submenu_dot {
+    width: 6px;
+    height: 6px;
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Estado ativo do submenu */
+.submenu_link.active {
+    background: linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.12),
+        hsl(var(--secondary) / 0.08)
+    );
+    color: hsl(var(--primary));
+    font-weight: 600;
+    border-color: hsl(var(--primary) / 0.3);
+}
+
+.submenu_link.active .submenu_dot {
+    background: hsl(var(--primary));
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.5);
+}
+
+/* Animação de entrada dos itens do submenu */
+.submenu_list.expanded .submenu_item {
+    animation: slideInSubmenu 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.submenu_list.expanded .submenu_item:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.submenu_list.expanded .submenu_item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.submenu_list.expanded .submenu_item:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+@keyframes slideInSubmenu {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ================================
+   MOBILE RESPONSIVENESS
+   ================================ */
+@media (max-width: 640px) {
+    .Menu_Container {
+        width: 85vw;
+        max-width: 22rem;
+    }
+    
+    .menu_drawer_content .close_menu_button {
+        left: -3rem;
+        padding: 0.5rem;
+    }
+    
+    .avatar_placeholder {
+        width: 3rem;
+        height: 3rem;
+    }
+}

@@ -1,0 +1,32 @@
+
+/* NavBar Styles for Hotto Dev */
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure navbar doesn't overlap content */
+section {
+    scroll-margin-top: 80px;
+}
+
+.Header_Container {
+    border-bottom: .5px solid hsl(var(--border) / 0.2);
+}
+
+.Header_Container .Header_Wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.Header_Container .buttons_container {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+
