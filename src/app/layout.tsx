@@ -12,7 +12,7 @@ const robotoSans = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "Hotto Dev - Code that burns 🔥",
+  title: "Hotto Dev",
   description: "Modern web development with the best technologies on the market",
 }
 
