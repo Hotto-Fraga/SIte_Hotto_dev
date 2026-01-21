@@ -80,29 +80,12 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-            
-            {/* Secção Empresa */}
-            <div className="footer-nav-section">
-              <h4 className="footer-nav-title">
-                Portfolio
-              </h4>
-              <ul className="footer-nav-list">
-                {navigation.portfolio.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} className="footer-nav-link">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-        {/* Secção de Direitos Autorais */}
         <p className="footer-copyright-year">
           &copy; {new Date().getFullYear()} Hotto Dev. All rights reserved.
         </p>
       </div>
+    </div>
+  </div>
     </footer>
   );
 }
