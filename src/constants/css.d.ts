@@ -1,3 +1,0 @@
-
-// this tells ts that any import ending with .css is a valid module
-declare module "*.css"
