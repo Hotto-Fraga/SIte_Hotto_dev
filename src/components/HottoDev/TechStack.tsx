@@ -31,7 +31,7 @@ export default function TechStack() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
-            Technologies We Master
+            Technologies
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
             Powerful tools to create extraordinary solutions
