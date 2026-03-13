@@ -37,6 +37,12 @@ export default function NavBar() {
               >
                 Projects
               </a>
+              <a
+                href = "/blog"
+                className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition font-medium"
+              >
+                Blog
+              </a>
             </nav>
 
             {/* Actions */}
