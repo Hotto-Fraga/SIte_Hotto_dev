@@ -6,11 +6,8 @@ import '@/styles/Footer/Footer.css'
 const navigation = {
   explorar: [
     { name: 'Technologies', href: '#technologies' },
-    { name: 'Mini Projects', href: '#projects' },
-  ],
-  portfolio: [
-    { name: 'About me', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Blog', href: '#blog'},
   ],
 }
 
@@ -80,9 +77,6 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-        <p className="footer-copyright-year">
-          &copy; {new Date().getFullYear()} Hotto Dev. All rights reserved.
-        </p>
       </div>
     </div>
   </div>

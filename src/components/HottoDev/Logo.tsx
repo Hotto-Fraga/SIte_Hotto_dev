@@ -10,7 +10,6 @@ export default function Logo() {
         <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
           Hotto Dev
         </span>
-        <span className="text-xs text-gray-500 dark:text-gray-400">Code that burns 🔥</span>
       </div>
     </div>
   )

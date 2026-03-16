@@ -26,13 +26,13 @@ export default function NavBar() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6">
               <a 
-                href="/#technologies" 
+                href="/techstack" 
                 className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition font-medium"
               >
                 Technologies
               </a>
               <a 
-                href="/#projects" 
+                href="/projects" 
                 className="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition font-medium"
               >
                 Projects

@@ -1,6 +1,7 @@
 "use client"
 
 import Logo from './Logo'
+import Link from 'next/link'
 
 export default function HeroSection() {
   return (
@@ -18,41 +19,37 @@ export default function HeroSection() {
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          Transform your ideas into
-          <span className="block bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-            Flawless Code
-          </span>
+          Personal Portfolio
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          Modern web development with the best technologies on the market. 
-          From concept to production, we create digital experiences that impress.
+          The goal of this project is to show my skills to the public. It’s a personal project that I use daily, along with a small blog where I share things I like, ideas I’m exploring, and experiences I’ve had along the way. 
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="#projects"
+          <Link
+            href="/projects"
             className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
           >
             View Projects
-          </a>
-          <a
-            href="#technologies"
+          </Link>
+          <Link
+            href="/techstack"
             className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all border-2 border-gray-200 dark:border-gray-700"
           >
             Explore Tech Stack
-          </a>
+          </Link>
         </div>
 
         {/* Stats */}
         <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
           <div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">9+</div>
+            <div className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">5+</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
           </div>
           <div>
             <div className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">6</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Demo Projects</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
           </div>
           <div>
             <div className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">100%</div>

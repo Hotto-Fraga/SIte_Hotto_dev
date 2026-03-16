@@ -57,13 +57,25 @@ export default function ItaliaPage() {
                     { icon: '🍋', title: 'Fermo', desc: 'The Balcony of the Marche, boasting a grand Renaissance piazza and mysterious underground Roman cisterns.' },
                   ].map((item) => (
                     <div key={item.title} className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4">
-                      {item.title === 'Bari' ? (
-                        <Link href="italia/bari" className="cursor-pointer hover:opacity-80 transition">
+                      {item.title === 'Bari' || item.title === 'Florence' || item.title === 'Trani' || item.title === 'Fermo' ? (
+                        <Link
+                          href={
+                            item.title === 'Bari'
+                              ? '/blog/italia/bari'
+                              : item.title === 'Trani'
+                                ? '/blog/italia/trani'
+                                : item.title === 'Fermo'
+                                  ? '/blog/italia/fermo'
+                                  : '/blog/italia/firenze'
+                          }
+                          className="cursor-pointer hover:opacity-80 transition"
+                        >
                             <div className="text-2xl mb-2">{item.icon}</div>
                             <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{item.title}</h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
                         </Link>
-                      ) : (
+                      ) 
+                      : (
                         <>
                           <div className="text-2xl mb-2">{item.icon}</div>
                           <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{item.title}</h3>
@@ -74,7 +86,6 @@ export default function ItaliaPage() {
                   ))}
                 </div>
               </section>
-
               <section>
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                   💡 Tips
